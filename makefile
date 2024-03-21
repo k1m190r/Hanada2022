@@ -1,4 +1,4 @@
-CFLAGS = -no-pie -std=c2x -fsanitize=address -Wall -Wextra -pedantic -Werror
+CFLAGS = -no-pie -std=c2x -fsanitize=address -Wall -Wextra -pedantic -Werror -lm
 
 # get the top most directory
 D = $(shell python -c "import os; print(sorted([x for x in os.listdir() if x[0]!='.'])[0])")

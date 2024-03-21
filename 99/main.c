@@ -12,6 +12,6 @@ int main() {
     double y = (double)rand() / RAND_MAX;
 
     if (x * x + y * y < 1e0) n_in += 1;
-      printf("%.10f\n", (double)n_in/iter);
+    printf("%.10f\n", (double)n_in / iter);
   }
 }

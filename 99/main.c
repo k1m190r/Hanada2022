@@ -3,7 +3,7 @@
 #include <time.h>
 
 int main() {
-  int niter = 1000;
+  int niter = 1'000;
   srand((unsigned)time(NULL));
 
   int n_in = 0;

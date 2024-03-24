@@ -34,6 +34,7 @@ void MD(double& x, double& init, double& fin) {
 
   init = hamiltonian(x, p);
   x = x + p * 0.5 * d_tau;
+
   for (int k = 1; k != n_tau; k++) {
     double _del_h = del_h(x);
     p = p - _del_h * d_tau;
@@ -67,18 +68,15 @@ int main() {
     else
       x = _x;
 
-    std::cout << std::fixed << std::setprecision(6)
-        << x << "  " 
-        << sum_xx/((double) (k+1)) << "  "
-        << ((double) n_accept/((double) k+1))
-        << std::endl;
+    sum_xx += x * x;
 
-    out_file << std::fixed << std::setprecision(6)
-        << x << "  " 
-        << sum_xx/((double) (k+1)) << "  "
-        << ((double) n_accept/((double) k+1))
-        << std::endl;
+    std::cout << k << "  " << std::fixed << std::setprecision(6) << x << "  "
+              << sum_xx / ((double)(k + 1)) << "  "
+              << ((double)n_accept / ((double)k + 1)) << std::endl;
 
+    out_file << k << "  " << std::fixed << std::setprecision(6) << x << "  "
+             << sum_xx / ((double)(k + 1)) << "  "
+             << ((double)n_accept / ((double)k + 1)) << std::endl;
   }
 
   out_file.close();

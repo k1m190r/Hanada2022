@@ -1,5 +1,5 @@
-C = cc -std=c2x
-# C = c++ -std=c++23
+# C = cc -std=c2x
+C = c++ -std=c++23
 CFLAGS = -no-pie -fsanitize=address -Wall -Wextra -pedantic -lm -Werror
 
 # get the top most directory

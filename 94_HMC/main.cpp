@@ -3,9 +3,9 @@
 #include <fstream>
 #include <iomanip>
 
-const int K = 10'000;
-const int n_tau = 40;
-const double d_tau = 1.0;
+const int K = 100'000;
+const int n_tau = 10;
+const double d_tau = 0.1;
 
 void box_miller(double& p, double& q) {
   double pi = 2.0 * asin(1.0);
@@ -70,13 +70,15 @@ int main() {
 
     sum_xx += x * x;
 
-    std::cout << k << "  " << std::fixed << std::setprecision(6) << x << "  "
-              << sum_xx / ((double)(k + 1)) << "  "
-              << ((double)n_accept / ((double)k + 1)) << std::endl;
+    if (k % 10'000 == 0) {
+      std::cout << k << "  " << std::fixed << std::setprecision(6) << x << "  "
+                << sum_xx / ((double)(k + 1)) << "  "
+                << ((double)n_accept / ((double)k + 1)) << std::endl;
 
-    out_file << k << "  " << std::fixed << std::setprecision(6) << x << "  "
-             << sum_xx / ((double)(k + 1)) << "  "
-             << ((double)n_accept / ((double)k + 1)) << std::endl;
+      out_file << k << "  " << std::fixed << std::setprecision(6) << x << "  "
+               << sum_xx / ((double)(k + 1)) << "  "
+               << ((double)n_accept / ((double)k + 1)) << std::endl;
+    }
   }
 
   out_file.close();

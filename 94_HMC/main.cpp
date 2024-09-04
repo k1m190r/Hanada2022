@@ -1,13 +1,13 @@
-#include <iostream>
 #include <cmath>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
 
 const int K = 100'000;
 const int n_tau = 10;
 const double d_tau = 0.1;
 
-void box_miller(double& p, double& q) {
+void box_miller(double &p, double &q) {
   double pi = 2.0 * asin(1.0);
 
   double r = (double)rand() / RAND_MAX;
@@ -26,7 +26,7 @@ double hamiltonian(const double x, const double p) {
 
 double del_h(const double x) { return x; }
 
-void MD(double& x, double& init, double& fin) {
+void MD(double &x, double &init, double &fin) {
   double r1, r2;
   box_miller(r1, r2);
 

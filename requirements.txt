@@ -3,3 +3,4 @@ numba
 ipykernel
 matplotlib
 dearpygui
+requests

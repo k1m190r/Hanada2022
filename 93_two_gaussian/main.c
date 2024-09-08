@@ -3,6 +3,10 @@
 #include <math.h>
 #include <time.h>
 
+double S(double x) {
+  return log(exp(-0.5*(x-3.0)*(x-3.0))+exp(-0.5*(x+3.0)*(x+3.0)));
+}
+
 int main() {
   int K = 10'000;
   double step_size = 0.5;
@@ -15,13 +19,13 @@ int main() {
   for (int k = 1; k < K + 1; k++) {
     // current
     double backup_x = x;
-    double action_init = 0.5 * x * x;
+    double action_init = S(x);
 
     // proposal
     double dx = (double)rand() / RAND_MAX; // [0, 1]
     dx = (dx - 0.5) * step_size * 2.0; // [-0.5, 0.5]
     x = x + dx;
-    double action_fin = 0.5 * x * x;
+    double action_fin = S(x);
 
     // metro test
     double metro = (double)rand() / RAND_MAX;
@@ -30,6 +34,9 @@ int main() {
     else
       x = backup_x;
 
-    printf("dx:%.10f, x:%.10f: acc_ratio:%f\n", dx, x, (double)n_accept / k);
+    if (k%1000 == 0)
+      printf(
+        "dx:%.10f, x^2:%.10f: acc_ratio:%f\n",
+            dx,        x*x,             (double)n_accept / k);
   }
 }

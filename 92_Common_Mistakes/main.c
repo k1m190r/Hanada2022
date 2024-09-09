@@ -4,8 +4,8 @@
 #include <time.h>
 
 double S(double x) {
-  double p1 = exp(-0.5*pow(x-3.0, 2));
-  double p2 =  exp(-0.5*pow(x+3.0, 2));
+  double p1 = exp(-0.5*pow(x-0.0, 2));
+  double p2 = exp(-0.5*pow(x+100.0, 2));
   return -log(p1+p2);
 }
 
